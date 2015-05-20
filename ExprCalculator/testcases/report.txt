@@ -1,0 +1,883 @@
+Testing Procedure
+========================================================
+------------------------------------------------------------------
+
+$ ( 
+$ ( ( 
+E001 LexicalException.
+Input: ((5 @ 4) ? 7 : 8
+Expected output: IllegalSymbolException
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( ( 
+$ ( ( decimal 
+E002 Right parenthesis expected.
+Input: ((12 12
+Expected output: MissingOperatorException
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( decimal 
+$ ( ArithExpr 
+$ ( ArithExpr + 
+$ ( ArithExpr + decimal 
+$ ( ArithExpr + ArithExpr 
+$ ( ArithExpr 
+$ ( ArithExpr ) 
+$ ArithExpr 
+$ ArithExpr ^ 
+$ ArithExpr ^ ( 
+$ ArithExpr ^ ( decimal 
+$ ArithExpr ^ ( ArithExpr 
+$ ArithExpr ^ ( ArithExpr - 
+$ ArithExpr ^ ( ArithExpr - decimal 
+$ ArithExpr ^ ( ArithExpr - ArithExpr 
+$ ArithExpr ^ ( ArithExpr 
+$ ArithExpr ^ ( ArithExpr ) 
+E003 Operator expected.
+Input: (1 + 2) ^ (3 - 4)  5
+Expected output: MissingOperatorException
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( decimal 
+$ ( ArithExpr 
+$ ( ArithExpr + 
+$ ( ArithExpr + decimal 
+$ ( ArithExpr + ArithExpr 
+$ ( ArithExpr 
+$ ( ArithExpr ) 
+$ ArithExpr 
+$ ArithExpr ^ 
+$ ArithExpr ^ ( 
+$ ArithExpr ^ ( decimal 
+$ ArithExpr ^ ( ArithExpr 
+$ ArithExpr ^ ( ArithExpr - 
+E004 Operand expected.
+Input: (1 + 2) ^ (3 - ) + 5
+Expected output: MissingOperandException
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+$ ArithExpr / 
+$ ArithExpr / ( 
+$ ArithExpr / ( decimal 
+$ ArithExpr / ( ArithExpr 
+$ ArithExpr / ( ArithExpr - 
+$ ArithExpr / ( ArithExpr - decimal 
+$ ArithExpr / ( ArithExpr - ArithExpr 
+$ ArithExpr / ( ArithExpr - ArithExpr * 
+$ ArithExpr / ( ArithExpr - ArithExpr * decimal 
+$ ArithExpr / ( ArithExpr - ArithExpr * ArithExpr 
+$ ArithExpr / ( ArithExpr - ArithExpr 
+$ ArithExpr / ( ArithExpr 
+$ ArithExpr / ( ArithExpr ) 
+$ ArithExpr / ArithExpr 
+E005 Divided by 0.
+Input: 4 / (12 - 3 * 4) + 1
+Expected output: DividedByZeroException
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( decimal 
+$ ( ArithExpr 
+$ ( ArithExpr < 
+$ ( ArithExpr < decimal 
+$ ( ArithExpr < ArithExpr 
+$ ( ArithExpr < ArithExpr * 
+$ ( ArithExpr < ArithExpr * decimal 
+$ ( ArithExpr < ArithExpr * ArithExpr 
+$ ( ArithExpr < ArithExpr 
+$ ( BoolExpr 
+$ ( BoolExpr ) 
+$ BoolExpr 
+$ BoolExpr + 
+$ BoolExpr + decimal 
+$ BoolExpr + ArithExpr 
+E006 Type mismatched.
+Input: (13 < 2 * 5) + 12
+Expected output: TypeMismatchedException
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+E007 Scientific Notation Error.
+Input: 4 + 10.E+5 + 1
+Expected output: IllegalDecimalException
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+E008 Not a predefined identifier.
+Input: 4 + mix(5, 2) + 1
+Expected output: IllegalIdentifierException
+Passed !
+------------------------------------------------------------------
+
+$ sin 
+$ sin ( 
+$ sin ( decimal 
+$ sin ( ArithExpr 
+$ sin ( ArithExpr , 
+$ sin ( ArithExpr , decimal 
+$ sin ( ArithExpr , ArithExprList 
+$ sin ( ArithExprList 
+$ sin ( ArithExprList ) 
+E009 Function call error.
+Input: sin(2, 1)
+Expected output: FunctionCallException
+Passed !
+------------------------------------------------------------------
+
+$ min 
+$ min ( 
+$ min ( decimal 
+$ min ( ArithExpr 
+$ min ( ArithExpr ) 
+E010 Function call error.
+Input: min(2.5)
+Expected output: MissingOperandException
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+$ ArithExpr * 
+$ ArithExpr * decimal 
+$ ArithExpr * ArithExpr 
+$ ArithExpr 
+$ ArithExpr >= 
+$ ArithExpr >= decimal 
+$ ArithExpr >= ArithExpr 
+$ ArithExpr >= ArithExpr * 
+$ ArithExpr >= ArithExpr * decimal 
+$ ArithExpr >= ArithExpr * ArithExpr 
+$ ArithExpr >= ArithExpr 
+$ BoolExpr 
+$ BoolExpr ? 
+$ BoolExpr ? ( 
+$ BoolExpr ? ( decimal 
+$ BoolExpr ? ( ArithExpr 
+$ BoolExpr ? ( ArithExpr : 
+$ BoolExpr ? ( ArithExpr : decimal 
+$ BoolExpr ? ( ArithExpr : ArithExpr 
+E011 SyntacticException.
+Input: 3.14 * 2 >= 2.5 * 3 ? (6 : 7) + 8
+Expected output: TrinaryOperationException
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+$ ArithExpr * 
+$ ArithExpr * neg 
+$ ArithExpr * neg decimal 
+$ ArithExpr * neg ArithExpr 
+$ ArithExpr * ArithExpr 
+$ ArithExpr 
+$ ArithExpr + 
+$ ArithExpr + neg 
+$ ArithExpr + neg decimal 
+$ ArithExpr + neg ArithExpr 
+$ ArithExpr + ArithExpr 
+$ ArithExpr + ArithExpr * 
+$ ArithExpr + ArithExpr * max 
+$ ArithExpr + ArithExpr * max ( 
+$ ArithExpr + ArithExpr * max ( sin 
+$ ArithExpr + ArithExpr * max ( sin ( 
+$ ArithExpr + ArithExpr * max ( sin ( decimal 
+$ ArithExpr + ArithExpr * max ( sin ( ArithExpr 
+$ ArithExpr + ArithExpr * max ( sin ( ArithExpr ) 
+$ ArithExpr + ArithExpr * max ( ArithExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , 
+$ ArithExpr + ArithExpr * max ( ArithExpr , cos 
+$ ArithExpr + ArithExpr * max ( ArithExpr , cos ( 
+$ ArithExpr + ArithExpr * max ( ArithExpr , cos ( decimal 
+$ ArithExpr + ArithExpr * max ( ArithExpr , cos ( ArithExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , cos ( ArithExpr ) 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , ( 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , ( decimal 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , ( ArithExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , ( ArithExpr + 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , ( ArithExpr + decimal 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , ( ArithExpr + ArithExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , ( ArithExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , ( ArithExpr > 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , ( ArithExpr > decimal 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , ( ArithExpr > ArithExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , ( BoolExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , ( BoolExpr ) 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( decimal 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( ArithExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( ArithExpr , 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( ArithExpr , decimal 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( ArithExpr , ArithExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( ArithExpr , ArithExpr / 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( ArithExpr , ArithExpr / decimal 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( ArithExpr , ArithExpr / ArithExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( ArithExpr , ArithExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( ArithExpr , ArithExpr - 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( ArithExpr , ArithExpr - decimal 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( ArithExpr , ArithExpr - ArithExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( ArithExpr , ArithExprList 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( ArithExprList 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? min ( ArithExprList ) 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? ArithExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? ArithExpr : 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? ArithExpr : decimal 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , BoolExpr ? ArithExpr : ArithExpr 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExpr , ArithExprList 
+$ ArithExpr + ArithExpr * max ( ArithExpr , ArithExprList 
+$ ArithExpr + ArithExpr * max ( ArithExprList 
+$ ArithExpr + ArithExpr * max ( ArithExprList ) 
+$ ArithExpr + ArithExpr * ArithExpr 
+$ ArithExpr + ArithExpr 
+$ ArithExpr 
+E012 A simple expression.
+Input: 3125e-6*-8+-6*max(sin(1.2),cos(3.6),(4+2>5)?min(2,10/3-2):6)
+Expected output: -8.025
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( decimal 
+$ ( ArithExpr 
+$ ( ArithExpr + 
+$ ( ArithExpr + decimal 
+$ ( ArithExpr + ArithExpr 
+$ ( ArithExpr 
+$ ( ArithExpr ) 
+$ ArithExpr 
+$ ArithExpr ^ 
+$ ArithExpr ^ decimal 
+$ ArithExpr ^ ArithExpr 
+$ ArithExpr 
+E013 SyntacticException.
+Input: (2 + 3) ^ 3) - ((1 + 1)
+Expected output: MissingLeftParenthesisException
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( ( 
+$ ( ( decimal 
+$ ( ( ArithExpr 
+$ ( ( ArithExpr + 
+$ ( ( ArithExpr + decimal 
+$ ( ( ArithExpr + ArithExpr 
+$ ( ( ArithExpr 
+$ ( ( ArithExpr ) 
+$ ( ArithExpr 
+$ ( ArithExpr ^ 
+$ ( ArithExpr ^ ( 
+$ ( ArithExpr ^ ( ( 
+$ ( ArithExpr ^ ( ( decimal 
+$ ( ArithExpr ^ ( ( ArithExpr 
+$ ( ArithExpr ^ ( ( ArithExpr - 
+$ ( ArithExpr ^ ( ( ArithExpr - decimal 
+$ ( ArithExpr ^ ( ( ArithExpr - ArithExpr 
+$ ( ArithExpr ^ ( ( ArithExpr 
+$ ( ArithExpr ^ ( ( ArithExpr ) 
+$ ( ArithExpr ^ ( ArithExpr 
+$ ( ArithExpr ^ ( ArithExpr + 
+$ ( ArithExpr ^ ( ArithExpr + decimal 
+$ ( ArithExpr ^ ( ArithExpr + ArithExpr 
+$ ( ArithExpr ^ ( ArithExpr 
+$ ( ArithExpr ^ ( ArithExpr ) 
+$ ( ArithExpr ^ ArithExpr 
+$ ( ArithExpr 
+E014 SyntacticException.
+Input: ((2 + 3) ^ ((3 - 1) + 1)
+Expected output: MissingRightParenthesisException
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( max 
+E015 SyntacticException.
+Input: (max5, 6, 8)
+Expected output: FunctionCallException
+Passed !
+------------------------------------------------------------------
+
+$ min 
+$ min ( 
+$ min ( decimal 
+$ min ( ArithExpr 
+$ min ( ArithExpr , 
+$ min ( ArithExpr , decimal 
+$ min ( ArithExpr , ArithExprList 
+$ min ( ArithExprList 
+$ min ( ArithExprList ) 
+$ ArithExpr 
+E016 A simple expression with min.
+Input: min(7e3,3.14e-0)
+Expected output: 3.14
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+$ ArithExpr - 
+$ ArithExpr - decimal 
+$ ArithExpr - ArithExpr 
+$ ArithExpr - ArithExpr * 
+$ ArithExpr - ArithExpr * decimal 
+$ ArithExpr - ArithExpr * ArithExpr 
+$ ArithExpr - ArithExpr 
+$ ArithExpr 
+C009 A simple expression.
+Input: 9 - 3 * 2
+Expected output: 3
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+$ ArithExpr - 
+$ ArithExpr - ( 
+$ ArithExpr - ( decimal 
+$ ArithExpr - ( ArithExpr 
+$ ArithExpr - ( ArithExpr + 
+$ ArithExpr - ( ArithExpr + decimal 
+$ ArithExpr - ( ArithExpr + ArithExpr 
+$ ArithExpr - ( ArithExpr + ArithExpr * 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( decimal 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( ArithExpr 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( ArithExpr / 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( ArithExpr / decimal 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( ArithExpr / ArithExpr 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( ArithExpr 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( ArithExpr ) 
+$ ArithExpr - ( ArithExpr + ArithExpr * ArithExpr 
+$ ArithExpr - ( ArithExpr + ArithExpr * ArithExpr ^ 
+$ ArithExpr - ( ArithExpr + ArithExpr * ArithExpr ^ decimal 
+$ ArithExpr - ( ArithExpr + ArithExpr * ArithExpr ^ ArithExpr 
+$ ArithExpr - ( ArithExpr + ArithExpr * ArithExpr 
+$ ArithExpr - ( ArithExpr + ArithExpr 
+$ ArithExpr - ( ArithExpr 
+$ ArithExpr - ( ArithExpr ) 
+$ ArithExpr - ArithExpr 
+$ ArithExpr 
+C010 Expression with arithmetic operations.
+Input: 2.25E+2 - (55.5 + 4 * (10 / 2) ^ 2)
+Expected output: 69.5
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+$ ArithExpr / 
+$ ArithExpr / decimal 
+$ ArithExpr / ArithExpr 
+$ ArithExpr 
+$ ArithExpr - 
+$ ArithExpr - decimal 
+$ ArithExpr - ArithExpr 
+$ ArithExpr 
+C011 Expression with arithmetic operations.
+Input: 65 / 5 - 130e-1
+Expected output: 0.0
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( decimal 
+$ ( ArithExpr 
+$ ( ArithExpr + 
+$ ( ArithExpr + decimal 
+$ ( ArithExpr + ArithExpr 
+$ ( ArithExpr 
+$ ( ArithExpr ) 
+$ ArithExpr 
+$ ArithExpr ^ 
+$ ArithExpr ^ decimal 
+$ ArithExpr ^ ArithExpr 
+$ ArithExpr 
+C012 Left parenthesis expected.
+Input: (2 + 3) ^ 3) - ((1 + 1)
+Expected output: MissingLeftParenthesisException
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( ( 
+$ ( ( decimal 
+$ ( ( ArithExpr 
+$ ( ( ArithExpr + 
+$ ( ( ArithExpr + decimal 
+$ ( ( ArithExpr + ArithExpr 
+$ ( ( ArithExpr 
+$ ( ( ArithExpr ) 
+$ ( ArithExpr 
+$ ( ArithExpr ^ 
+$ ( ArithExpr ^ ( 
+$ ( ArithExpr ^ ( ( 
+$ ( ArithExpr ^ ( ( decimal 
+$ ( ArithExpr ^ ( ( ArithExpr 
+$ ( ArithExpr ^ ( ( ArithExpr - 
+$ ( ArithExpr ^ ( ( ArithExpr - decimal 
+$ ( ArithExpr ^ ( ( ArithExpr - ArithExpr 
+$ ( ArithExpr ^ ( ( ArithExpr 
+$ ( ArithExpr ^ ( ( ArithExpr ) 
+$ ( ArithExpr ^ ( ArithExpr 
+$ ( ArithExpr ^ ( ArithExpr + 
+$ ( ArithExpr ^ ( ArithExpr + decimal 
+$ ( ArithExpr ^ ( ArithExpr + ArithExpr 
+$ ( ArithExpr ^ ( ArithExpr 
+$ ( ArithExpr ^ ( ArithExpr ) 
+$ ( ArithExpr ^ ArithExpr 
+$ ( ArithExpr 
+C013 Right parenthesis expected.
+Input: ((2 + 3) ^ ((3 - 1) + 1)
+Expected output: MissingRightParenthesisException
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( decimal 
+$ ( ArithExpr 
+$ ( ArithExpr + 
+$ ( ArithExpr + decimal 
+$ ( ArithExpr + ArithExpr 
+$ ( ArithExpr 
+$ ( ArithExpr ) 
+$ ArithExpr 
+$ ArithExpr ^ 
+$ ArithExpr ^ ( 
+$ ArithExpr ^ ( decimal 
+$ ArithExpr ^ ( ArithExpr 
+$ ArithExpr ^ ( ArithExpr - 
+$ ArithExpr ^ ( ArithExpr - decimal 
+$ ArithExpr ^ ( ArithExpr - ArithExpr 
+$ ArithExpr ^ ( ArithExpr 
+$ ArithExpr ^ ( ArithExpr ) 
+C014 Operator expected.
+Input: (1 + 2) ^ (3 - 4)  5
+Expected output: MissingOperatorException
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( decimal 
+$ ( ArithExpr 
+$ ( ArithExpr + 
+$ ( ArithExpr + decimal 
+$ ( ArithExpr + ArithExpr 
+$ ( ArithExpr 
+$ ( ArithExpr ) 
+$ ArithExpr 
+$ ArithExpr ^ 
+$ ArithExpr ^ ( 
+$ ArithExpr ^ ( decimal 
+$ ArithExpr ^ ( ArithExpr 
+$ ArithExpr ^ ( ArithExpr - 
+C015 Operand expected.
+Input: (1 + 2) ^ (3 - ) + 5
+Expected output: MissingOperandException
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+$ ArithExpr / 
+$ ArithExpr / ( 
+$ ArithExpr / ( decimal 
+$ ArithExpr / ( ArithExpr 
+$ ArithExpr / ( ArithExpr - 
+$ ArithExpr / ( ArithExpr - decimal 
+$ ArithExpr / ( ArithExpr - ArithExpr 
+$ ArithExpr / ( ArithExpr - ArithExpr * 
+$ ArithExpr / ( ArithExpr - ArithExpr * decimal 
+$ ArithExpr / ( ArithExpr - ArithExpr * ArithExpr 
+$ ArithExpr / ( ArithExpr - ArithExpr 
+$ ArithExpr / ( ArithExpr 
+$ ArithExpr / ( ArithExpr ) 
+$ ArithExpr / ArithExpr 
+C016 Divided by 0.
+Input: 4 / (12 - 3 * 4) + 1
+Expected output: DividedByZeroException
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+$ ArithExpr - 
+$ ArithExpr - decimal 
+$ ArithExpr - ArithExpr 
+$ ArithExpr - ArithExpr * 
+$ ArithExpr - ArithExpr * decimal 
+$ ArithExpr - ArithExpr * ArithExpr 
+$ ArithExpr - ArithExpr 
+$ ArithExpr 
+C017 A simple expression.
+Input: 9 - 3 * 2
+Expected output: 3
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+$ ArithExpr - 
+$ ArithExpr - ( 
+$ ArithExpr - ( decimal 
+$ ArithExpr - ( ArithExpr 
+$ ArithExpr - ( ArithExpr + 
+$ ArithExpr - ( ArithExpr + decimal 
+$ ArithExpr - ( ArithExpr + ArithExpr 
+$ ArithExpr - ( ArithExpr + ArithExpr * 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( decimal 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( ArithExpr 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( ArithExpr / 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( ArithExpr / decimal 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( ArithExpr / ArithExpr 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( ArithExpr 
+$ ArithExpr - ( ArithExpr + ArithExpr * ( ArithExpr ) 
+$ ArithExpr - ( ArithExpr + ArithExpr * ArithExpr 
+$ ArithExpr - ( ArithExpr + ArithExpr * ArithExpr ^ 
+$ ArithExpr - ( ArithExpr + ArithExpr * ArithExpr ^ decimal 
+$ ArithExpr - ( ArithExpr + ArithExpr * ArithExpr ^ ArithExpr 
+$ ArithExpr - ( ArithExpr + ArithExpr * ArithExpr 
+$ ArithExpr - ( ArithExpr + ArithExpr 
+$ ArithExpr - ( ArithExpr 
+$ ArithExpr - ( ArithExpr ) 
+$ ArithExpr - ArithExpr 
+$ ArithExpr 
+C018 Expression with arithmetic operations.
+Input: 2.25E+2 - (55.5 + 4 * (10 / 2) ^ 2)
+Expected output: 69.5
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+$ ArithExpr / 
+$ ArithExpr / decimal 
+$ ArithExpr / ArithExpr 
+$ ArithExpr 
+$ ArithExpr - 
+$ ArithExpr - decimal 
+$ ArithExpr - ArithExpr 
+$ ArithExpr 
+C019 Expression with arithmetic operations.
+Input: 65 / 5 - 130e-1
+Expected output: 0.0
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( decimal 
+$ ( ArithExpr 
+$ ( ArithExpr > 
+$ ( ArithExpr > decimal 
+$ ( ArithExpr > ArithExpr 
+$ ( BoolExpr 
+$ ( BoolExpr ) 
+$ BoolExpr 
+$ BoolExpr & 
+$ BoolExpr & ( 
+$ BoolExpr & ( decimal 
+$ BoolExpr & ( ArithExpr 
+$ BoolExpr & ( ArithExpr < 
+$ BoolExpr & ( ArithExpr < decimal 
+$ BoolExpr & ( ArithExpr < ArithExpr 
+$ BoolExpr & ( BoolExpr 
+$ BoolExpr & ( BoolExpr ) 
+$ BoolExpr & BoolExpr 
+$ BoolExpr 
+$ BoolExpr ? 
+$ BoolExpr ? decimal 
+$ BoolExpr ? ArithExpr 
+$ BoolExpr ? ArithExpr : 
+$ BoolExpr ? ArithExpr : decimal 
+$ BoolExpr ? ArithExpr : ArithExpr 
+$ ArithExpr 
+C020 Expression with relational and logical operations.
+Input: (5 > 3) & (4 < 8) ? 15 : 16
+Expected output: 15
+Passed !
+------------------------------------------------------------------
+
+$ max 
+$ max ( 
+$ max ( sin 
+$ max ( sin ( 
+$ max ( sin ( decimal 
+$ max ( sin ( ArithExpr 
+$ max ( sin ( ArithExpr ) 
+$ max ( ArithExpr 
+$ max ( ArithExpr , 
+$ max ( ArithExpr , cos 
+$ max ( ArithExpr , cos ( 
+$ max ( ArithExpr , cos ( decimal 
+$ max ( ArithExpr , cos ( ArithExpr 
+$ max ( ArithExpr , cos ( ArithExpr ) 
+$ max ( ArithExpr , ArithExpr 
+$ max ( ArithExpr , ArithExpr , 
+$ max ( ArithExpr , ArithExpr , sin 
+$ max ( ArithExpr , ArithExpr , sin ( 
+$ max ( ArithExpr , ArithExpr , sin ( cos 
+$ max ( ArithExpr , ArithExpr , sin ( cos ( 
+$ max ( ArithExpr , ArithExpr , sin ( cos ( decimal 
+$ max ( ArithExpr , ArithExpr , sin ( cos ( ArithExpr 
+$ max ( ArithExpr , ArithExpr , sin ( cos ( ArithExpr ) 
+$ max ( ArithExpr , ArithExpr , sin ( ArithExpr 
+$ max ( ArithExpr , ArithExpr , sin ( ArithExpr ) 
+$ max ( ArithExpr , ArithExpr , ArithExprList 
+$ max ( ArithExpr , ArithExprList 
+$ max ( ArithExprList 
+$ max ( ArithExprList ) 
+$ ArithExpr 
+C021 Predefined functions.
+Input: max(sin(0.15), cos(0.15), sin(cos(0.15)))
+Expected output: 0.98877
+Passed !
+------------------------------------------------------------------
+
+$ sin 
+$ sin ( 
+$ sin ( min 
+$ sin ( min ( 
+$ sin ( min ( decimal 
+$ sin ( min ( ArithExpr 
+$ sin ( min ( ArithExpr , 
+$ sin ( min ( ArithExpr , decimal 
+$ sin ( min ( ArithExpr , ArithExpr 
+$ sin ( min ( ArithExpr , ArithExpr * 
+$ sin ( min ( ArithExpr , ArithExpr * decimal 
+$ sin ( min ( ArithExpr , ArithExpr * ArithExpr 
+$ sin ( min ( ArithExpr , ArithExpr 
+$ sin ( min ( ArithExpr , ArithExpr , 
+$ sin ( min ( ArithExpr , ArithExpr , decimal 
+$ sin ( min ( ArithExpr , ArithExpr , ArithExpr 
+$ sin ( min ( ArithExpr , ArithExpr , ArithExpr + 
+$ sin ( min ( ArithExpr , ArithExpr , ArithExpr + decimal 
+$ sin ( min ( ArithExpr , ArithExpr , ArithExpr + ArithExpr 
+$ sin ( min ( ArithExpr , ArithExpr , ArithExpr + ArithExpr ^ 
+$ sin ( min ( ArithExpr , ArithExpr , ArithExpr + ArithExpr ^ decimal 
+$ sin ( min ( ArithExpr , ArithExpr , ArithExpr + ArithExpr ^ ArithExpr 
+$ sin ( min ( ArithExpr , ArithExpr , ArithExpr + ArithExpr 
+$ sin ( min ( ArithExpr , ArithExpr , ArithExpr 
+$ sin ( min ( ArithExpr , ArithExpr , ArithExpr , 
+$ sin ( min ( ArithExpr , ArithExpr , ArithExpr , decimal 
+$ sin ( min ( ArithExpr , ArithExpr , ArithExpr , ArithExprList 
+$ sin ( min ( ArithExpr , ArithExpr , ArithExprList 
+$ sin ( min ( ArithExpr , ArithExprList 
+$ sin ( min ( ArithExprList 
+$ sin ( min ( ArithExprList ) 
+$ sin ( ArithExpr 
+$ sin ( ArithExpr ) 
+$ ArithExpr 
+C022 Predefined functions.
+Input: sin(min(12, 3 * 5, 2 + 3 ^ 2, 3.14E2))
+Expected output: -0.99999
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( decimal 
+$ ( ArithExpr 
+$ ( ArithExpr + 
+$ ( ArithExpr + decimal 
+$ ( ArithExpr + ArithExpr 
+$ ( ArithExpr 
+$ ( ArithExpr ) 
+$ ArithExpr 
+$ ArithExpr ^ 
+$ ArithExpr ^ decimal 
+$ ArithExpr ^ ArithExpr 
+$ ArithExpr 
+C023 Left parenthesis expected.
+Input: (2 + 3) ^ 3) - ((1 + 1)
+Expected output: MissingLeftParenthesisException
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( ( 
+$ ( ( decimal 
+$ ( ( ArithExpr 
+$ ( ( ArithExpr + 
+$ ( ( ArithExpr + decimal 
+$ ( ( ArithExpr + ArithExpr 
+$ ( ( ArithExpr 
+$ ( ( ArithExpr ) 
+$ ( ArithExpr 
+$ ( ArithExpr ^ 
+$ ( ArithExpr ^ ( 
+$ ( ArithExpr ^ ( ( 
+$ ( ArithExpr ^ ( ( decimal 
+$ ( ArithExpr ^ ( ( ArithExpr 
+$ ( ArithExpr ^ ( ( ArithExpr - 
+$ ( ArithExpr ^ ( ( ArithExpr - decimal 
+$ ( ArithExpr ^ ( ( ArithExpr - ArithExpr 
+$ ( ArithExpr ^ ( ( ArithExpr 
+$ ( ArithExpr ^ ( ( ArithExpr ) 
+$ ( ArithExpr ^ ( ArithExpr 
+$ ( ArithExpr ^ ( ArithExpr + 
+$ ( ArithExpr ^ ( ArithExpr + decimal 
+$ ( ArithExpr ^ ( ArithExpr + ArithExpr 
+$ ( ArithExpr ^ ( ArithExpr 
+$ ( ArithExpr ^ ( ArithExpr ) 
+$ ( ArithExpr ^ ArithExpr 
+$ ( ArithExpr 
+C024 Right parenthesis expected.
+Input: ((2 + 3) ^ ((3 - 1) + 1)
+Expected output: MissingRightParenthesisException
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( decimal 
+$ ( ArithExpr 
+$ ( ArithExpr + 
+$ ( ArithExpr + decimal 
+$ ( ArithExpr + ArithExpr 
+$ ( ArithExpr 
+$ ( ArithExpr ) 
+$ ArithExpr 
+$ ArithExpr ^ 
+$ ArithExpr ^ ( 
+$ ArithExpr ^ ( decimal 
+$ ArithExpr ^ ( ArithExpr 
+$ ArithExpr ^ ( ArithExpr - 
+$ ArithExpr ^ ( ArithExpr - decimal 
+$ ArithExpr ^ ( ArithExpr - ArithExpr 
+$ ArithExpr ^ ( ArithExpr 
+$ ArithExpr ^ ( ArithExpr ) 
+C025 Operator expected.
+Input: (1 + 2) ^ (3 - 4)  5
+Expected output: MissingOperatorException
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( decimal 
+$ ( ArithExpr 
+$ ( ArithExpr + 
+$ ( ArithExpr + decimal 
+$ ( ArithExpr + ArithExpr 
+$ ( ArithExpr 
+$ ( ArithExpr ) 
+$ ArithExpr 
+$ ArithExpr ^ 
+$ ArithExpr ^ ( 
+$ ArithExpr ^ ( decimal 
+$ ArithExpr ^ ( ArithExpr 
+$ ArithExpr ^ ( ArithExpr - 
+C026 Operand expected.
+Input: (1 + 2) ^ (3 - ) + 5
+Expected output: MissingOperandException
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+$ ArithExpr / 
+$ ArithExpr / ( 
+$ ArithExpr / ( decimal 
+$ ArithExpr / ( ArithExpr 
+$ ArithExpr / ( ArithExpr - 
+$ ArithExpr / ( ArithExpr - decimal 
+$ ArithExpr / ( ArithExpr - ArithExpr 
+$ ArithExpr / ( ArithExpr - ArithExpr * 
+$ ArithExpr / ( ArithExpr - ArithExpr * decimal 
+$ ArithExpr / ( ArithExpr - ArithExpr * ArithExpr 
+$ ArithExpr / ( ArithExpr - ArithExpr 
+$ ArithExpr / ( ArithExpr 
+$ ArithExpr / ( ArithExpr ) 
+$ ArithExpr / ArithExpr 
+C027 Divided by 0.
+Input: 4 / (12 - 3 * 4) + 1
+Expected output: DividedByZeroException
+Passed !
+------------------------------------------------------------------
+
+$ ( 
+$ ( decimal 
+$ ( ArithExpr 
+$ ( ArithExpr < 
+$ ( ArithExpr < decimal 
+$ ( ArithExpr < ArithExpr 
+$ ( ArithExpr < ArithExpr * 
+$ ( ArithExpr < ArithExpr * decimal 
+$ ( ArithExpr < ArithExpr * ArithExpr 
+$ ( ArithExpr < ArithExpr 
+$ ( BoolExpr 
+$ ( BoolExpr ) 
+$ BoolExpr 
+$ BoolExpr + 
+$ BoolExpr + decimal 
+$ BoolExpr + ArithExpr 
+C028 Type mismatched.
+Input: (13 < 2 * 5) + 12
+Expected output: TypeMismatchedException
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+C029 Scientific Notation Error.
+Input: 4 + 10.E+5 + 1
+Expected output: IllegalDecimalException
+Passed !
+------------------------------------------------------------------
+
+$ decimal 
+$ ArithExpr 
+C030 Not a predefined identifier.
+Input: 4 + mix(5, 2) + 1
+Expected output: IllegalIdentifierException
+Passed !
+------------------------------------------------------------------
+
+$ sin 
+$ sin ( 
+$ sin ( decimal 
+$ sin ( ArithExpr 
+$ sin ( ArithExpr , 
+$ sin ( ArithExpr , decimal 
+$ sin ( ArithExpr , ArithExprList 
+$ sin ( ArithExprList 
+$ sin ( ArithExprList ) 
+C031 Function call error.
+Input: sin(2, 1)
+Expected output: FunctionCallException
+Passed !
+------------------------------------------------------------------
+
+$ min 
+$ min ( 
+$ min ( decimal 
+$ min ( ArithExpr 
+$ min ( ArithExpr ) 
+C032 Function call error.
+Input: min(2.5)
+Expected output: MissingOperandException
+Passed !
+
+--------------------------------------------------------
+Statistics Report (40 test cases):
+
+	Passed case(s): 40 (100.0%)
+	Warning case(s): 0 (0.0%)
+	Failed case(s): 0 (0.0%)
+========================================================
+
